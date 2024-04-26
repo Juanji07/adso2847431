@@ -1,4 +1,4 @@
-# == adso2847431 ==
+# (ADSO2847431)
 ## Análisis y Desarrollo de Software 
 ### Centro de procesos Industriales y Construccion
 
