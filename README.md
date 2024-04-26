@@ -4,7 +4,7 @@
 
 ---
 
-![Hollow Knight](https://tinyurl.com/mrywmbua)
+![Hollow Knight](https://tinyurl.com/yc4n84ec)
 
 | # | Topic      | Description       |
 |---|---         |---                |
