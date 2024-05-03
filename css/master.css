@@ -7,7 +7,7 @@
 /* V A R I A B L E S */
 /* - - - - - - - - - - - - - - */
 :root {
-    --color-pri: rgb(0, 88, 104);
+    --color-pri: rgb(0, 95, 112);
     --color-sec: rgb(208, 238, 243);
     --font-fam: Poppins, sans-serif;
 }
@@ -116,6 +116,7 @@ main {
             border-radius: 10px;
             background-color: var(--color-pri);
             color: var(--color-sec);
+            align-items: center;
             display: flex;
             gap: 1rem;
             text-decoration: none;
