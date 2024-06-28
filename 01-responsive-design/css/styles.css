@@ -23,23 +23,30 @@ G e n e r a l
 body{
     background-color: var(--color1);
     color: var(--color2);
-    main{
-        header{
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    header{
             background-color: var(--color2) ;
             display: flex;
             align-items: center;
             justify-content: space-between;
             height: 100px;
             padding-inline: 1rem;
-            
-            img {
-                transition: transform 0.4s ease-in;
-                width: 168px;
-            }
+            width: 100%;
+        }
+        img {
+            transition: transform 0.4s ease-in;
+            width: 168px;
+            display: flex;
         }
         nav{
             display: flex;
             gap: 3rem;
+            background-color: #DC9FBA;
+            border-radius: 10px;
             a:is(:link, :visited){
                 color: azure;
                 font-family: var(--heading);
@@ -49,6 +56,7 @@ body{
                 align-items: center;
                 transition: transform 0.2s ease-in;
                 flex-direction: column;
+
             }
             a:is(:hover){
                 transform: scale(1.1);
@@ -57,52 +65,425 @@ body{
                 transform: translateY(5px);
             }
         }
-        section.slider{
-            height: 600px;
-            img{
-                height: 600px;
-                object-fit: cover;
+}
+/* Owl nav */
+div.owl-nav {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    button {
+        transition: all 0.2s ease-in;
+        span {
+            display: flex;
+            height: 60px;
+            width: 60px;
+            text-indent: -9999px;
+        }
+    }
+    button.owl-prev {
+        &:hover {
+            background: transparent !important;
+            transform: translatex(-3px);
+        }
+        span {
+            background: url(../images/btn-prev.svg) no-repeat center;
+        }
+    }
+    button.owl-next {
+        &:hover {
+            background: transparent !important;
+            transform: translatex(3px);
+        }
+        span {
+            background: url(../images/btn-next.svg) no-repeat center;
+        }
+    }
+}
+
+/* Section Slider */
+section.slider1 {
+    height: 600px;
+    img {
+        height: 600px;
+        object-fit: cover;
+    }
+    div.owl-dots {
+        margin-top: -30px;
+        position: relative;
+        button.owl-dot {
+            span {
+                background-color: #f5b7d3;
+                height: 14px;
+                transition: all 0.4s ease-in;
+                width: 14px;
             }
-            div.owl-nav{
-                display: flex;
-                justify-content: space-between;
-                position: absolute;
-                width: 100%;
-                top: 50%;
-                transform: translateY(-50%);
-                button{
-                    span{
-                        background-color: red;
-                        display: flex;
-                        height: 50px;
-                        width: 50px;
-                        text-indent: -9999px;
-                    }
-                }
-                button.owl-prev{
-                    &:hover{
-                        background: transparent;
-                        transform: translateX(-5px);
-                        transition: transform 0.2s ease-in;
-                    }
-                    span{
-                        background: url(../images/btn-prev.svg) no-repeat center;
-                    }
-                }
-                button.owl-next{
-                    &:hover{
-                        background: transparent;
-                        transform: translateX(5px);
-                        transition: transform 0.2s ease-in;
-                    }
-                    span{
-                        background: url(../images/btn-next.svg) no-repeat center;
-                    }
-                }
+        }
+        button.owl-dot.active {
+            span {
+                background-color: var(--color2);
             }
+        }
+        button.owl-dot hover {
+            span {
+                background-color: var(--color2);
+                transform: scale(1.2);
+            }
+        }
+    }
+}
+
+/* Section: objects */
+section.objetos {
+    background-color: var(--color1);
+    height: 695px;
+    padding-top: 30px;
+
+    h2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: var(--heading);
+        font-size: 40px;
+        text-align: center;
+        margin-left: 6rem;
+        border-radius: 10px;
+        width: 290px;
+        color: #00989D;
+        background-color: azure;
+        position: relative;
         img{
-            height: 600px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 32px;
         }
+    }
+
+
+    div.slider2 {
+        margin-inline: auto;
+        margin-block: 2rem;
+        width: 90%;
+        article {
+            height: 400px;
+            figure {
+                background-color: #70DFE2;
+                img {
+                    height: 300px;
+                    object-fit: contain;
+                }
+            }
+            figcaption {
+                background-color: #268386;
+                color: azure;
+                font-family: var(--heading);
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                font-size: 30px;
+                height: 100px;
+            }
         }
+    }
+    
+}
+
+/* Section: Personajes */
+section.personajes{
+    position: relative;
+    background-color: var(--color2);
+    height: 700px;
+
+    .personajes-background {
+        position: absolute;
+        width: 100%;
+        background-color: var(--color3); 
+    }
+
+    h2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: var(--heading);
+        font-size: 40px;
+        text-align: center;
+        margin-left: 3rem;
+        padding-top: 3rem;
+        width: 290px;
+    }
+
+    div.slider3 {
+        margin-inline: auto;
+        margin-block: 2rem;
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+/*Druida*/
+    article.druida {
+        position: relative;
+        width: 100%; 
+        margin-bottom: 20px;
+        @media screen and (min-width: 600px) {
+            width: 40%;
+        }
+    }
+
+    article.druida figure {
+        position: relative;
+        margin-bottom: 10px;
+    }
+
+    article.druida figure img {
+        width: 100%;
+        height: 350px;
+        display: block;
+        background-color: #D2DF83;
+    }
+
+    article.druida figcaption {
+        background-color: var(--color4);
+        color: azure;
+        font-family: var(--heading);
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        font-size: 50px;
+        height: 76px;
+    }
+
+    article.druida .info_perso {
+        position: absolute;
+        top: 0;
+        left: 100%; 
+        width: 360px; 
+        height: 426px;
+        padding: 25px; 
+        background-color: azure; 
+        color: black; 
+        font-family: var(--body); 
+        font-size: 16px; 
+        @media screen and (max-width: 0px) {
+            position: relative;
+            transform: none;
+            left: 0;
+        }
+    }
+/*Hada*/
+    article.hada {
+        position: relative;
+        width: 100%; 
+        margin-bottom: 20px;
+        @media screen and (min-width: 600px) {
+            width: 40%;
+        }
+    }
+
+    article.hada figure {
+        position: relative;
+        margin-bottom: 10px;
+    }
+
+    article.hada figure img {
+        width: 100%;
+        height: 350px;
+        display: block;
+        background-color: #BDF7F9;
+    }
+
+    article.hada figcaption {
+        background-color: #00B8BE;
+        color: azure;
+        font-family: var(--heading);
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        font-size: 50px;
+        height: 76px;
+    }
+
+    article.hada .info_perso {
+        position: absolute;
+        top: 0;
+        left: 100%; 
+        width: 360px; 
+        height: 426px;
+        padding: 25px; 
+        background-color: azure; 
+        color: black; 
+        font-family: var(--body); 
+        font-size: 16px; 
+        @media screen and (max-width: 0px) {
+            position: relative;
+            transform: none;
+            left: 0;
+        }
+    }
+}
+
+/* Section: Weapons */
+section.weapons {
+    background-color: var(--color2);
+    height: 695px;
+}
+
+section.weapons h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 40px;
+    text-align: center;
+    margin-left: 3rem;
+    padding-top: 9rem;
+    width: 290px;
+}
+
+section.weapons .slider4 {
+    display: flex;
+    justify-content: center; 
+    margin-top: 2rem; 
+}
+
+section.weapons .slider4 article {
+    width: 80%; 
+    margin: 0 1rem; 
+}
+
+section.weapons .slider4 article figure {
+    text-align: center;
+    margin-bottom: 1rem; 
+}
+
+section.weapons .slider4 article figure img {
+    height: 160px; 
+    width: 160px;
+    object-fit: cover;
+    border-radius: 50%; 
+    margin-bottom: 10px; 
+}
+
+section.weapons .slider4 article figcaption {
+    background-color: var(--color1);
+    color: var(--color5);
+    font-family: var(--font-heading);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    height: 80px;
+    border-radius: 0 0 10px 10px; 
+}
+
+/* Estilo Botón */
+section.weapons .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 60px;
+    background-color: var(--color1);
+    color: white;
+    border: none;
+    font-size: 18px;
+    border-radius: 30px;
+    margin: 2rem auto;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+section.weapons .btn:hover {
+    background-color: var(--color3);
+}
+
+/* Redes sociales */
+
+.websocial {
+    position: absolute;
+    width: 100%;
+    background-color: var(--color1);
+    margin-top: 50px;
+}
+
+.webs {
+    max-width: 600px; 
+    margin: 0 auto; 
+    padding-top: 20px; 
+}
+
+.webs article {
+    margin-bottom: 20px; 
+}
+
+.webs figure {
+    display: flex;
+    justify-content: center; 
+}
+
+.webs figure img {
+    max-width: 80px; 
+    margin: 10px; 
+}
+
+.webs h1 {
+    color: white; 
+    text-align: center; 
+    margin: 20px 0; 
+}
+
+/*Menú hamburguesa*/
+@media screen and (max-width: 800px) {
+    header nav {
+        display: none; 
+    }
+
+    .hamburger {
+        display: block; 
+        position: absolute;
+        top: 30px; 
+        right: 20px; 
+        z-index: 999; 
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 40px; /* Ajusta el tamaño del botón */
+        height: 40px; /* Ajusta el tamaño del botón */
+    }
+
+    .hamburger .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: var(--color5);
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .mobile-menu {
+        display: none; 
+        position: absolute;
+        top: 70px; 
+        left: 0;
+        right: 0;
+        background-color: var(--color1);
+        padding: 20px;
+        z-index: 998; 
+    }
+
+    .mobile-menu.active {
+        display: block; 
+    }
+
+    .mobile-menu a {
+        display: block;
+        color: var(--color5);
+        font-family: var(--font-heading);
+        text-decoration: none;
+        font-size: 24px;
+        margin-bottom: 10px;
     }
 }
