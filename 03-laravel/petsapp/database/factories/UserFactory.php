@@ -5,6 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -23,12 +26,29 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $gender = fake()->randomElement(['Male','Female']);
+        $document = fake()->unique()->numerify('10########');
+        $firstName = $gender == 'Male' ? fake()->firstNameMale() : fake()->firstNameFemale();
+        $profileImage = $gender == 'Male' 
+                    ? 'https://avatar.iran.liara.run/public/boy'
+                    : 'https://avatar.iran.liara.run/public/girl';
+
+        $imageContent = Http::get($profileImage)->body();
+        $imageName = 'profile_' . $document . '.jpg';
+
+        $imagePath = 'avatars/' . $imageName;
+        Storage::disk('public')->put($imagePath, $imageContent);
         return [
-            'name' => fake()->name(),
+            'document' => $document,
+            'fullname' => $firstName.' '.fake()->lastName(),
+            'gender' => $gender,
+            'birthdate' => fake()->dateTimeBetween('1974-01-01','2004-12-31'),
+            'photo' => Storage::url($imagePath),
+            'phone' => fake()->numerify('320######'),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'password' => static::$password ??= Hash::make('12345'),
+            'remember_token'=> str::random(10),
+            'created_at'=> now()
         ];
     }
 
