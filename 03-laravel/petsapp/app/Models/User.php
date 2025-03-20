@@ -51,4 +51,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function adoptions() {
+        return $this->hasMany(Adoption::class);
+    }
 }
+
+
