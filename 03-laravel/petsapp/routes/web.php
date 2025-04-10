@@ -45,9 +45,9 @@ Route::get('Hello', function(){
     return "<h1>Hello Laravel</h1>";
 })->Name('hello');
 
-Route::get('show/pets', function(){
-    $pets = App\Models\Pet::all();
-    dd($pets->toArray());
+Route::get('show/pet/{id}', function(){
+    $pet = App\Models\Pet::find(request()->id);
+    return view('show-pet')->with('pet', $pet);
 });
 
 
