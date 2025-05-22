@@ -4,6 +4,8 @@ use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\volt;
 use App\Models\User as User;
+use Illuminate\Http\request;
+use Illuminate\Support\Facades\Auth;
 
 Route::view('/', 'welcome');
 
@@ -15,7 +17,7 @@ Route::get('show/users',function(){
 
 Route::get('challenge/users',function(){
     $users = User::limit(20)->get();
-    
+
     $code = "<table style='border-collapse: collapse; margin: 2rem auto; font-family: Arial'>
         <tr>
             <th style='background: gray; color: white; padding: 0.4rem'>Full Name</th>
@@ -50,11 +52,25 @@ Route::get('show/pet/{id}', function(){
     return view('show-pet')->with('pet', $pet);
 });
 
+Route::get('/dashboard', function(Request $request ) {
+
+    if (Auth::user->role == 'Admin') {
+        return view('dashboard-admin');
+    } else if (Auth::user()->role == 'Customer') {
+        return view('dashboard-customer');
+    } else {
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->back()->with('error', 'Role no exits!');
+    }
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+
+// Route::view('dashboard', 'dashboard')
+//     ->middleware(['auth', 'verified'])
+//     ->name('dashboard');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
