@@ -9,6 +9,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('factory', function () {
+    $users= \App\Models\User::all();
+    return view('users-factory')->with('users', $users);
+});
+
 Route::get('/dashboard', function (Request $request) {
     if (Auth::user()->role == 'Admin') {
         return view('dashboard-admin');
@@ -35,6 +40,8 @@ Route::middleware('auth')->group(function () {
         //'pets' => UserController::class,
         //'adoptions' => UserController::class,
     ]);
+
+    Route::post('users/search', [UserController::class, 'search']);
 });
 
 require __DIR__.'/auth.php';

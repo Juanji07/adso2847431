@@ -10,7 +10,7 @@
     <section class="users grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
         @foreach ($users as $user)
     <div class="flex flex-col bg-teal-900 p-2 rounded-sm justify-center items-center">
-        <img src="{{ $user->photo }}" width="100px" alt="{{ $user->fullname }}">
+        <img src="{{ public_path().$user->photo }}" width="100px" alt="{{ $user->fullname }}">
         <h3 class="font-bold">{{ $user->fullname }}</h3>
         <h4 class="text-teal-100">{{ $user->role }}</h4>
         <h5 class="text-teal-50 opacity-25">Adoptions: <small>{{ $user->adoptions->count() }}</small></h5>
