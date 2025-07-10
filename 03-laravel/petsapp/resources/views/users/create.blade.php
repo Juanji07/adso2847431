@@ -18,7 +18,7 @@
   </ul>
 </div>
 
-<form method="post" action="{{ url('users.store') }}" class="pt-6 pb-20" enctype="multipart/form-data"> <!-- Importante para subir imagenes el enctype -->
+<form method="post" action="{{ route('users.store') }}" class="pt-6 pb-20" enctype="multipart/form-data"> <!-- Importante para subir imagenes el enctype -->
         @csrf
         <fieldset class="fieldset w-md bg-base-200 border border-base-300 p-4 rounded-box">
                 @if (count($errors->all()) > 0)
@@ -34,7 +34,7 @@
 
                 <div class="avatar mx-auto flex-col gap-2 items-center">
                         <div id="upload" class="mask mask-squircle cursor-pointer hover:scale-110 transition-transform">
-                            <img id="preview" src="{{ asset('images/profile.jpg') }}" />
+                            <img id="preview" src="{{ asset('images/no-photo.jpg') }}" />
                         </div>
                         <small class="font-bold text-gray-500 flex items-center gap-1">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">

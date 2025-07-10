@@ -191,13 +191,12 @@
         });
 
         const qSearch = document.querySelector('#qsearch');
+        const list = document.querySelector('#list');
 
         qSearch.addEventListener('keyup', function(event) {
             event.preventDefault()
             let query = this.value
-            let token = document.querySelector('input[name="token"]');
-
-            alert(query + '  ' + token.value)
+            let token = document.querySelector('input[name=_token]');
 
             fetch('users/search', {
                 method: 'POST',
@@ -205,16 +204,21 @@
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
                     'X-CSRF-TOKEN': token.value
-                }
-                body: JSON.stringify{
+                },
+                body: JSON.stringify({
                     'q': query
-                }
-            }).then(response => {
-
-            }).then(dara => {
-
+                })
+            }).then(response => response.text())
+                .then(data => {
+                list.innerHTML = `<tr>
+                                    <td colspan="4" class="text-center">
+                                        <span class="loading loading-spinner loading-xl flex mx-auto"></span>
+                                    </td>
+                                </tr>`
+                setTimeout(() => {
+                    list.innerHTML = data;
+                }, 2000);
             })
         })
-
     </script>
 @endsection

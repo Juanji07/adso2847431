@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PetController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,6 +13,11 @@ Route::get('/', function () {
 Route::get('factory', function () {
     $users= \App\Models\User::all();
     return view('users-factory')->with('users', $users);
+});
+
+Route::get('factory', function () {
+    $oets= \App\Models\Pet::all();
+    return view('upets-factory')->with('pets', $pets);
 });
 
 Route::get('/dashboard', function (Request $request) {
@@ -37,11 +43,12 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::resources([
         'users' => UserController::class,
-        //'pets' => UserController::class,
+        'pets' => PetController::class,
         //'adoptions' => UserController::class,
     ]);
 
     Route::post('users/search', [UserController::class, 'search']);
+    Route::post('pets/search', [PetController::class, 'search']);
 });
 
 require __DIR__.'/auth.php';

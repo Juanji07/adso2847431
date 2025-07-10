@@ -4,7 +4,7 @@
 @section('content')
     <div class="card bg-base-100 w-96 shadow-sm">
         <figure>
-            <img src="{{ asset('storage/avatars/welcome.png')}}" alt="Shoes" />
+            <img src="{{ asset('images/petsapp.png')}}" alt="Shoes" />
         </figure>
         <div class="card-body">
             <h2 class="card-title">Welcome PetsApp</h2>
